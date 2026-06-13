@@ -1,0 +1,163 @@
+/* ═══════════════════════════════════════════════
+   ansii — 80s RETRO / ANSI ART DESIGN SYSTEM
+   ═══════════════════════════════════════════════ */
+
+:root {
+  /* ─── Colors ─── */
+  --color-bg: #121212;
+  --color-bg-raised: #1a1a1a;
+  --color-bg-card: #1e1e1e;
+  --color-bg-code: #161616;
+
+  --color-primary: #ff6b6b;       /* warm coral */
+  --color-primary-light: #ff8e8e;
+  --color-primary-dim: #cc4444;
+
+  --color-accent: #ffd93d;        /* cyber yellow */
+  --color-accent-dim: #ccaa22;
+
+  --color-secondary: #6bcb77;     /* retro teal/green */
+  --color-secondary-light: #8edb97;
+  --color-secondary-dim: #4aad57;
+
+  --color-cyan: #4dd0e1;
+  --color-magenta: #ff6bb5;
+  --color-orange: #ffa726;
+
+  /* Rainbow sequence for decorative elements */
+  --rainbow-1: #ff6b6b;  /* red */
+  --rainbow-2: #ffa726;  /* orange */
+  --rainbow-3: #ffd93d;  /* yellow */
+  --rainbow-4: #6bcb77;  /* green */
+  --rainbow-5: #4dd0e1;  /* cyan */
+  --rainbow-6: #ff6bb5;  /* pink */
+
+  /* ─── Text ─── */
+  --color-text: #e8e8e8;
+  --color-text-dim: #999999;
+  --color-text-bright: #ffffff;
+  --color-text-muted: #666666;
+
+  /* ─── Borders ─── */
+  --color-border: #333333;
+  --color-border-bright: #ff6b6b;
+  --color-border-accent: #ffd93d;
+
+  /* ─── Typography ─── */
+  --font-heading: 'Press Start 2P', 'Courier New', monospace;
+  --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-code: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  /* ─── Spacing ─── */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+
+  /* ─── Sizing ─── */
+  --max-width: 1200px;
+  --header-height: 64px;
+
+  /* ─── Effects ─── */
+  --border-thick: 3px;
+  --border-thicker: 4px;
+}
+
+/* ─── Scanline overlay ─── */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  z-index: 9999;
+  animation: scanline 8s linear infinite;
+}
+
+/* ─── TV scanline texture ─── */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ─── ANSI block character decorations ─── */
+.ansi-block {
+  font-family: var(--font-code);
+  color: var(--color-primary);
+  letter-spacing: 2px;
+}
+
+.ansi-block--dim {
+  color: var(--color-text-muted);
+}
+
+.ansi-block--accent {
+  color: var(--color-accent);
+}
+
+.ansi-block--secondary {
+  color: var(--color-secondary);
+}
+
+/* ─── Rainbow section dividers ─── */
+.rainbow-divider {
+  height: var(--border-thick);
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  background: linear-gradient(
+    90deg,
+    var(--rainbow-1),
+    var(--rainbow-2),
+    var(--rainbow-3),
+    var(--rainbow-4),
+    var(--rainbow-5),
+    var(--rainbow-6)
+  );
+}
+
+/* ─── Matrix dots ─── */
+.matrix-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.matrix-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 0;
+  opacity: 0.6;
+}
+
+.matrix-dot:nth-child(1) { background: var(--rainbow-1); }
+.matrix-dot:nth-child(2) { background: var(--rainbow-2); }
+.matrix-dot:nth-child(3) { background: var(--rainbow-3); }
+.matrix-dot:nth-child(4) { background: var(--rainbow-4); }
+.matrix-dot:nth-child(5) { background: var(--rainbow-5); }
+.matrix-dot:nth-child(6) { background: var(--rainbow-6); }
